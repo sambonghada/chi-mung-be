@@ -1,5 +1,7 @@
 FROM krmp-d2hub.9rum.cc/goorm/openjdk:17
 
+RUN echo "systemProp.http.proxyHost=krmp-proxy.9rum.cc\nsystemProp.http.proxyPort=3128\nsystemProp.https.proxyHost=krmp-proxy.9rum.cc\nsystemProp.https.proxyPort=3128" > /root/.gradle/gradle.properties
+
 WORKDIR /app
 
 COPY . .
