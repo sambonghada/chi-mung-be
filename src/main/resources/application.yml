@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: mariadb
+    url: jdbc:mariadb://mariadb:3306/sambong?characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: tkaqhdgkek!!
     driver-class-name: org.mariadb.jdbc.Driver
