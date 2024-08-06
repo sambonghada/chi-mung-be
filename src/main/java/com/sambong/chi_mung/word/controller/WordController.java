@@ -21,7 +21,7 @@ public class WordController {
     }
 
     @GetMapping("/random/{count}")
-    public List<Word> getRandomWordsByCount(@PathVariable int count) {
+    public List<List<Word>> getRandomWordsByCount(@PathVariable int count) {
         return wordService.getRandomWordsByCount(count);
     }
 }
