@@ -23,6 +23,6 @@ public class Word {
     private String meaning;
     private String soundurl;
 
-//    public Word(String word, String meaning, String soundurl) {
-//    }
+    private int soundNumber;
+
 }
