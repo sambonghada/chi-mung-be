@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.sambong.chi_mung.score.controller.ScoreControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-05T13:52:16" hostname="gimdaegeon-ui-MacBookPro.local" time="0.782">
+  <properties/>
+  <testcase name="testGetTop10Scores_sentence()" classname="com.sambong.chi_mung.score.controller.ScoreControllerTest" time="0.773"/>
+  <testcase name="testGetTop10Scores_word()" classname="com.sambong.chi_mung.score.controller.ScoreControllerTest" time="0.007"/>
+  <system-out><![CDATA[22:52:17.437 [Test worker] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+22:52:17.440 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+22:52:17.441 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+22:52:17.513 [Test worker] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+22:52:17.513 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+22:52:17.513 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
