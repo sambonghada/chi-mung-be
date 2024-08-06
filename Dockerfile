@@ -6,7 +6,7 @@ COPY . .
 
 RUN ./gradlew clean build
 
-COPY app/build/libs/chi-mung-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY /app/build/libs/chi-mung-0.0.1-SNAPSHOT.jar /app/app.jar
 
 EXPOSE 8080
 
