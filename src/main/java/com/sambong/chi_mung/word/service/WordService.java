@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -99,6 +101,30 @@ public class WordService {
 
         List<Word> selectedWords = filteredWords.subList(0, count);
 
+        // soundUrl에서 숫자를 추출하여 soundNumber로 설정합니다.
+        selectedWords.forEach(word -> {
+            String soundUrl = word.getSoundurl();
+            if (soundUrl != null) {
+                // 'dialect=' 뒤에 위치한 숫자를 찾는 정규식 패턴
+                Pattern pattern = Pattern.compile("dialect=(\\d+)");
+                Matcher matcher = pattern.matcher(soundUrl);
+                if (matcher.find()) {
+                    try {
+                        Integer soundNumber = Integer.parseInt(matcher.group(1));
+                        word.setSoundNumber(soundNumber); // soundNumber 필드에 값을 설정
+                    } catch (NumberFormatException e) {
+                        // 파싱 오류가 발생한 경우 로그를 남기거나 예외를 처리할 수 있습니다.
+                        System.err.println("Failed to parse sound number from: " + soundUrl);
+                        word.setSoundNumber(0);
+                    }
+                } else {
+                    word.setSoundNumber(0); // 'dialect=' 뒤에 숫자가 없으면 null로 설정
+                }
+            } else {
+                word.setSoundNumber(0); // soundUrl이 null이면 soundNumber도 null로 설정
+            }
+        });
+
         // 10개씩 그룹화하여 리스트를 만듭니다.
         List<List<Word>> groupedWords = new ArrayList<>();
         for (int i = 0; i < selectedWords.size(); i += 10) {
@@ -107,4 +133,5 @@ public class WordService {
 
         return groupedWords;
     }
+
 }
