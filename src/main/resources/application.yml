@@ -1,7 +1,7 @@
 spring:
   datasource:
     url: mariadb
-    username: sambong
+    username: root
     password: tkaqhdgkek!!
     driver-class-name: org.mariadb.jdbc.Driver
 
