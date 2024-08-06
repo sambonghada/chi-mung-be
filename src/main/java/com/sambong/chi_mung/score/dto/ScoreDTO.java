@@ -1,9 +1,6 @@
 package com.sambong.chi_mung.score.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +12,4 @@ public class ScoreDTO {
     private int score;
     private String category;
 
-    public String getCategory() {
-        return this.category;
-    }
 }

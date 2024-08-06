@@ -16,7 +16,6 @@ public class ScoreController {
 
     @GetMapping("/top10/{category}")
     public List<ScoreDTO> getTop10Scores(@PathVariable String category) {
-        System.out.println(category);
         return scoreService.getTop10ScoresByCategory(category);
     }
 
