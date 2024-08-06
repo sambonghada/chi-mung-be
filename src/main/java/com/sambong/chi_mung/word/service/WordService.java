@@ -80,7 +80,7 @@ public class WordService {
         }
     }
 
-    public List<Word> getRandomWordsByCount(int count) {
+    public List<List<Word>> getRandomWordsByCount(int count) {
         // 데이터베이스에서 모든 단어를 가져옵니다.
         List<Word> allWords = wordRepository.findAll();
 
@@ -94,10 +94,17 @@ public class WordService {
 
         // 요청된 개수만큼 단어를 반환합니다.
         if (count > filteredWords.size()) {
-            return filteredWords; // 요청한 개수가 실제 단어 수보다 크면 모든 필터링된 단어를 반환
-        } else {
-            return filteredWords.subList(0, count); // 요청한 개수만큼 잘라서 반환
+            count = filteredWords.size(); // 요청한 개수가 실제 단어 수보다 크면 전체 필터링된 단어 수로 제한
         }
-    }
 
+        List<Word> selectedWords = filteredWords.subList(0, count);
+
+        // 10개씩 그룹화하여 리스트를 만듭니다.
+        List<List<Word>> groupedWords = new ArrayList<>();
+        for (int i = 0; i < selectedWords.size(); i += 10) {
+            groupedWords.add(selectedWords.subList(i, Math.min(i + 10, selectedWords.size())));
+        }
+
+        return groupedWords;
+    }
 }
