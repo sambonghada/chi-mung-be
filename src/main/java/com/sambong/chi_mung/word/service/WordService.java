@@ -56,7 +56,7 @@ public class WordService {
             List<Word> words = new ArrayList<>();
 
             // 특수문자를 제거하기 위한 정규식 패턴
-            Pattern specialCharPattern = Pattern.compile("[^a-zA-Z0-9가-힣\\s]");
+            Pattern specialCharPattern = Pattern.compile("[^가-힣\\s]");
 
             for (JsonNode itemNode : itemsNode) {
                 String name = itemNode.path("name").asText();
