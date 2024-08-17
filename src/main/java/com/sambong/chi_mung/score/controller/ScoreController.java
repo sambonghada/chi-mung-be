@@ -19,6 +19,11 @@ public class ScoreController {
         return scoreService.getTop10ScoresByCategory(category);
     }
 
+    @GetMapping("/top50/{category}")
+    public List<ScoreDTO> getTop50Scores(@PathVariable String category) {
+        return scoreService.getTop50ScoresByCategory(category);
+    }
+
     @PostMapping
     public ScoreDTO saveScore(@RequestBody ScoreDTO scoreDTO) {
         return scoreService.saveScore(scoreDTO);
