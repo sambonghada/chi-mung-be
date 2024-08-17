@@ -22,6 +22,13 @@ public class ScoreService {
                 .collect(Collectors.toList());
     }
 
+    public List<ScoreDTO> getTop50ScoresByCategory(String category) {
+        List<Score> top50Scores = scoreRepository.findTop50ByCategoryIgnoreCaseOrderByScoreDesc(category);
+        return top50Scores.stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
+    }
+
     public ScoreDTO saveScore(ScoreDTO scoreDTO) {
         Score score = convertToEntity(scoreDTO);
         Score savedScore = scoreRepository.save(score);
