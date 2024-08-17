@@ -55,6 +55,9 @@ public class WordService {
             JsonNode itemsNode = rootNode.path("items");
             List<Word> words = new ArrayList<>();
 
+            // 특수문자를 제거하기 위한 정규식 패턴
+            Pattern specialCharPattern = Pattern.compile("[^a-zA-Z0-9가-힣\\s]");
+
             for (JsonNode itemNode : itemsNode) {
                 String name = itemNode.path("name").asText();
                 String contents = itemNode.path("contents").asText();
@@ -65,6 +68,10 @@ public class WordService {
                     System.out.println("Excluding data: " + name + ", " + contents);
                     continue; // 이 데이터를 제외하고 다음으로 넘어갑니다.
                 }
+
+                // 특수문자를 제거
+                name = specialCharPattern.matcher(name).replaceAll("");
+                contents = specialCharPattern.matcher(contents).replaceAll("");
 
                 // Word 엔티티로 변환
                 Word word = new Word();
@@ -118,10 +125,10 @@ public class WordService {
                         word.setSoundNumber(0);
                     }
                 } else {
-                    word.setSoundNumber(0); // 'dialect=' 뒤에 숫자가 없으면 null로 설정
+                    word.setSoundNumber(0); // 'dialect=' 뒤에 숫자가 없으면 0으로 설정
                 }
             } else {
-                word.setSoundNumber(0); // soundUrl이 null이면 soundNumber도 null로 설정
+                word.setSoundNumber(0); // soundUrl이 null이면 soundNumber도 0으로 설정
             }
         });
 
